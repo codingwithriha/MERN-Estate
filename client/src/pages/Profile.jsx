@@ -1,14 +1,28 @@
-import React from "react";
+
 import { useSelector } from "react-redux";
 
+
+
 export default function Profile() {
+  
   const { currentUser } = useSelector((state) => state.user);
+  
+
+  // firebase storage
+  // allow read
+  // allow write : if
+  // request.resource.size < 2 * 1024 * 1024 &&
+  // request.resource.contentType.matches('image/.*');
+  
+ 
+
   return (
     <div className="p-3 max-w-lg mx-auto">
       <h1 className="text-3xl font-semibold text-center my-7">Profile</h1>
       <form className="flex flex-col gap-4">
         <img
           src={currentUser.avatar}
+          onClick={() => fileRef.current.click()}
           alt="profile"
           className="rounded-full h-24 w-24 object-cover cursor-pointer self-center mt-2"
         />
