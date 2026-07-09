@@ -16,9 +16,7 @@ const app = express();
 app.use(
   cors({
     origin: [
-      "http://localhost:5173",
-      "https://taniva.vercel.app",
-      "https://abc-project-fronte.vercel.app",
+      "http://localhost:5173"
     ],
     credentials: true, // if you use cookies, otherwise can be false
   })
