@@ -68,16 +68,14 @@ export const google = async (req, res, next) => {
 
     let user = await User.findOne({ email });
 
-    const token = jwt.sign({ id: user?._id }, process.env.JWT_SECRET, {
-      expiresIn: "7d",
-    });
-
     if (user) {
-      // Update avatar if missing or default
+      const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+        expiresIn: "7d",
+      });
+
       if (
         !user.avatar ||
-        user.avatar ===
-          "https://pixabay.com/vectors/blank-profile-picture-mystery-man-973460/"
+        user.avatar === "https://pixabay.com/vectors/blank-profile-picture-mystery-man-973460/"
       ) {
         user.avatar = photo;
         await user.save();
@@ -90,12 +88,11 @@ export const google = async (req, res, next) => {
           httpOnly: true,
           secure: process.env.NODE_ENV === "production",
           sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",
-          maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+          maxAge: 7 * 24 * 60 * 60 * 1000,
         })
         .status(200)
         .json({ success: true, ...rest });
     } else {
-      // Create new user from Google
       const generatedPassword = Math.random().toString(36).slice(-8);
       const hashedPassword = bcryptjs.hashSync(generatedPassword, 10);
 
@@ -111,6 +108,10 @@ export const google = async (req, res, next) => {
 
       await newUser.save();
 
+      const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET, {
+        expiresIn: "7d",
+      });
+
       const { password: pass, ...rest } = newUser._doc;
 
       return res
@@ -118,7 +119,7 @@ export const google = async (req, res, next) => {
           httpOnly: true,
           secure: process.env.NODE_ENV === "production",
           sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",
-          maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+          maxAge: 7 * 24 * 60 * 60 * 1000,
         })
         .status(201)
         .json({ success: true, ...rest });

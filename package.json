@@ -8,7 +8,7 @@
     "start": "node api/index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "codingwithriha",
   "license": "ISC",
   "description": "",
   "dependencies": {
