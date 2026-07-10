@@ -16,7 +16,9 @@ const app = express();
 app.use(
   cors({
     origin: [
-      "http://localhost:5173"
+      "http://localhost:5173",
+      "https://estate-hubapi.vercel.app",
+      "https://estate-hubclient.vercel.app",
     ],
     credentials: true, // if you use cookies, otherwise can be false
   })
