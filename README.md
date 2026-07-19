@@ -1,6 +1,6 @@
-# 🏠 Estate Hub — MERN Real Estate Platform
+# 🏠 Estate Hub (MERN Real Estate Platform)
 
-A full-stack real estate listing platform built with the MERN stack (MongoDB, Express, React, Node.js). Users can browse, search, and filter property listings, sign up or sign in (including Google OAuth), create and manage their own listings with image uploads, and contact landlords directly.
+A fullstack real estate listing platform built with the MERN stack (MongoDB, Express, React, Node.js). Users can browse, search, and filter property listings, sign up or sign in (including Google OAuth), create and manage their own listings with image uploads, and contact landlords directly.
 
 **Live Demo:** [estate-hubclient.vercel.app](https://estate-hubclient.vercel.app/) <br>
 **API:** [estate-hubapi.vercel.app](https://estate-hubapi.vercel.app/)
